@@ -12,7 +12,6 @@ export default function addedList(state = initialState, action) {
             newState.list = state.list.slice()
             newState.list.push(action.payload)
             newState.fetching = false
-            console.log(newState)
             return newState
         case "CHECK_CITY_ERROR":
             alert(action.payload)

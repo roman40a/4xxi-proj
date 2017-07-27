@@ -9,7 +9,6 @@ export default class AddingCountry extends Component {
     }
 
     onChange(propName, event ) {
-        console.log(this, event.target.value)
         let state = Object.assign({},this.state)
         state[propName] = event.target.value
         this.setState(state)

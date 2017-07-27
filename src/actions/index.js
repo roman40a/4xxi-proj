@@ -54,8 +54,6 @@ export function showCurrentWeather() {
 
 export function showWeatherByCityCountry(city, country) {
 
-    console.log(city, country)
-
     return (dispatch) => {
 
         dispatch({
@@ -73,7 +71,6 @@ export function showWeatherByCityCountry(city, country) {
                     })
                 },
                 error => {
-                    console.log("ERROR", city, country)
                     dispatch({
                         type: "GET_WEATHER_ERROR"
                     })
@@ -127,7 +124,6 @@ export function deleteCity(city, country) {
 }
 
 export function selectCity(city, country) {
-    console.log(city, country)
 
     return (dispatch) => {
 
@@ -146,7 +142,6 @@ export function selectCity(city, country) {
                     })
                 },
                 error => {
-                    console.log("ERROR", city, country)
                     dispatch({
                         type: "GET_WEATHER_ERROR"
                     })

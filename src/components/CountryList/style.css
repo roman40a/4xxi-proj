@@ -1,0 +1,31 @@
+.country-list .country-item {
+  list-style-type: none;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  margin: 15px;
+  padding: 7px;
+}
+
+.country-item:hover {
+  background-color: rgb(180,180,180);
+  cursor: pointer;
+}
+
+.country-item__delete:hover {
+  background-color: rgb(180, 50, 50);
+  cursor: pointer;
+}
+
+.country-item div {
+  display: inline-block;
+}
+.country-item__info {
+  width: 80%;
+}
+.country-item__label {
+  width: 50%;
+}
+.country-item__delete {
+  width: 20%;
+}

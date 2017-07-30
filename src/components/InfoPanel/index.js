@@ -14,7 +14,7 @@ export default class InfoPanel extends Component {
             <Row className="info-panel">
                 <Col md={12}>
                     <div>
-                        <img alt="weather icon" src={`http://openweathermap.org/img/w/${icon}.png`}/>
+                        <img alt="weather icon" src={icon?`http://openweathermap.org/img/w/${icon}.png`:''}/>
                     </div>
                     <div>{`${temperature} \u2103`}</div>
                     <div>{description}</div>

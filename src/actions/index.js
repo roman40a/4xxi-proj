@@ -27,6 +27,9 @@ function httpGet(url) {
 export function getCoords() {
     return (dispatch) => {
 
+        if (!navigator.geolocation)
+            alert("Ваш браузер не поддерживает геолокацию\nПерейдите на более новый")
+
         dispatch({
             type: "GET_COORDS_REQUEST"
         })

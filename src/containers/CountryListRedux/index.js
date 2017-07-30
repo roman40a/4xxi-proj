@@ -19,17 +19,17 @@ class CountryListRedux extends Component {
     }
 }
 
-function mapDispatchToProps(dispatch) {
-    return {
-        actions: bindActionCreators(actions, dispatch)
-    }
-}
-
 function mapStateToProps(state) {
     return {
         list: state.weather.list,
         selectedItem: state.weather.selectedItem,
         fetching: state.weather.fetching
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(actions, dispatch)
     }
 }
 

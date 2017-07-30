@@ -4,27 +4,26 @@ const initialState = {
 }
 
 export default function addedList(state = initialState, action) {
+    const {city, country} = action.payload ? action.payload : {}
+    let newAddedList = []
+
     switch (action.type) {
         case "CHECK_CITY_REQUEST":
-            return {...state, checkingCity: action.payload, fetching: true}
+            return {...state, fetching: true}
         case "CHECK_CITY_SUCCESS":
-            let newState = {}
-            newState.list = state.list.slice()
-            newState.list.push(action.payload)
-            newState.fetching = false
-            return newState
+            newAddedList = state.list.slice()
+            newAddedList.push(action.payload)
+            return {...state, list: newAddedList, fetching: false}
         case "CHECK_CITY_ERROR":
-            alert(action.payload)
+            const errorMessage = `Простите, \nгород "${city}" \nи страна "${country}"\nне найдены`
+            alert(errorMessage)
             return state
         case "DELETE_CITY":
-            const {city, country} = action.payload
-            newState = {}
-            newState.list = state.list.slice()
-            let newList = newState.list.filter(
+            newAddedList = state.list.slice()
+            newAddedList = newAddedList.filter(
                 (item) => !(item.city === city && item.country === country)
             )
-            newState.list = newList
-            return newState
+            return {...state, list: newAddedList}
         default:
             return state
     }

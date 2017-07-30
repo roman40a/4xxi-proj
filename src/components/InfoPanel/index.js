@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
+import {Row, Col} from 'react-bootstrap'
 import Loader from './Loader'
+import './style.css'
 
 export default class InfoPanel extends Component {
     render() {
@@ -11,20 +13,25 @@ export default class InfoPanel extends Component {
         const city = weather ? weather.name : null
         const country = weather ? weather.sys.country : null
         return (
-            (fetching || weather === null) ?
-                <div className="info-panel">
-                    <Loader/>
-                </div>
+            (fetching) ?
+                <Row className="info-panel">
+                    <Col md={12}>
+                        <Loader/>
+                        Загрузка...
+                    </Col>
+                </Row>
                 :
-                <div className="info-panel">
-                    <div>
-                        <img alt="weather icon" src={`http://openweathermap.org/img/w/${icon}.png`}/>
-                    </div>
-                    <div>{`${temperature} \u2103`}</div>
-                    <div>{description}</div>
-                    <div>{`Город: ${city}`}</div>
-                    <div>{`Страна: ${country}`}</div>
-                </div>
+                <Row className="info-panel">
+                    <Col md={12}>
+                        <div>
+                            <img alt="weather icon" src={`http://openweathermap.org/img/w/${icon}.png`}/>
+                        </div>
+                        <div>{`${temperature} \u2103`}</div>
+                        <div>{description}</div>
+                        <div>{`Город: ${city}`}</div>
+                        <div>{`Страна: ${country}`}</div>
+                    </Col>
+                </Row>
         )
     }
 }

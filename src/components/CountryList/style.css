@@ -1,10 +1,16 @@
+.country-list {
+  padding: 0;
+}
 .country-list .country-item {
   list-style-type: none;
   border-style: solid;
   border-color: black;
   border-width: 2px;
   margin: 15px;
-  padding: 7px;
+}
+
+.country-list .country-item .selected {
+  border-width: 5px;
 }
 
 .country-item:hover {
@@ -15,6 +21,7 @@
 .country-item__delete:hover {
   background-color: rgb(180, 50, 50);
   cursor: pointer;
+  padding: 7px;
 }
 
 .country-item div {
@@ -22,6 +29,7 @@
 }
 .country-item__info {
   width: 80%;
+  padding: 7px;
 }
 .country-item__label {
   width: 50%;

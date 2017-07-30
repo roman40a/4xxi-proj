@@ -5,7 +5,7 @@ import './bootstrap.css'
 export default class App extends Component {
     componentDidMount() {
         const {onLoadHandler} = this.props
-        onLoadHandler()
+        // onLoadHandler()
     }
     render() {
         return (

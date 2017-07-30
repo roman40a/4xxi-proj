@@ -22,13 +22,9 @@ export default class AddingCountry extends Component {
         const {city, country} = this.state
         return (
             <Row>
-                <Col md={4}>
+                <Col md={3}>
                     <FormControl onChange={this.onChange.bind(this, "city")} type="text" placeholder="city" />
-                </Col>
-                <Col md={4}>
                     <FormControl onChange={this.onChange.bind(this, "country")} type="text" placeholder="country" />
-                </Col>
-                <Col md={4}>
                     <Button onClick={() => addCity(city,country)}>Добавить в список</Button>
                 </Col>
             </Row>

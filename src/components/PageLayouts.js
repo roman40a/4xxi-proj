@@ -10,20 +10,12 @@ class PageLayouts extends Component {
     render() {
         const { containerWidth: width, containerHeight: height } = this.props
         return (
-            <Grid fluid={true} style={{width, height, paddingTop: 15, paddingBottom: 15}}>
-                <Row style={{width}}>
-                    <Col md={8}>
-                        <CurrentButtonRedux/>
-                    </Col>
-                    <Col md={4}><AddingCountryRedux/></Col>
-                </Row>
-                <Row style={{width}}>
-                    <Col md={8}>
-                        <InfoPanelRedux/>
-                    </Col>
-                    <Col md={4}>
-                        <CountryList/>
-                    </Col>
+            <Grid style={{ paddingTop: 15, paddingBottom: 15}}>
+                <Row>
+                    <CurrentButtonRedux/>
+                    <InfoPanelRedux/>
+                    <AddingCountryRedux/>
+                    <CountryList/>
                 </Row>
             </Grid>
         )

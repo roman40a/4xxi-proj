@@ -9,7 +9,9 @@ class AddingCountryRedux extends Component {
         const { addCity } = this.props.actions
         const { fullList } = this.props
         return (
-            <AddingCountry countryList={fullList} addCity={addCity}/>
+            <AddingCountry
+                countryList={fullList}
+                addCity={addCity}/>
         )
     }
 }

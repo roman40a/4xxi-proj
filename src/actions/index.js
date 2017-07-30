@@ -30,6 +30,7 @@ export function showCurrentWeather() {
         dispatch({
             type: "GET_WEATHER_REQUEST"
         })
+
         navigator.geolocation.getCurrentPosition(function(position) {
 
             const lat = position.coords.latitude,
@@ -45,68 +46,42 @@ export function showCurrentWeather() {
                             payload: responseObj
                         })
                     },
-                    error => alert(`Rejected: ${error}`)
+                    error => console.log(`Rejected: ${error}`)
                 );
         });
     }
 
 }
 
-export function showWeatherByCityCountry(city, country) {
-
-    return (dispatch) => {
-
-        dispatch({
-            type: "GET_WEATHER_REQUEST"
-        })
-
-        httpGet(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&lang=ru&units=metric&appid=7e91ed4cb83bc8d8e49421dc64835af5`)
-            .then(
-                response => {
-                    const responseObj = JSON.parse(response)
-
-                    dispatch({
-                        type: "GET_WEATHER_SUCCESS",
-                        payload: responseObj
-                    })
-                },
-                error => {
-                    dispatch({
-                        type: "GET_WEATHER_ERROR"
-                    })
-                }
-            );
-    }
-}
-
 export function addCity(city, country) {
     return (dispatch) => {
 
         dispatch({
-            type: "CHECK_CITY_REQUEST",
-            payload: {
-                city,
-                country
-            }
+            type: "CHECK_CITY_REQUEST"
         })
 
         httpGet(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&lang=ru&units=metric&appid=7e91ed4cb83bc8d8e49421dc64835af5`)
             .then(
                 response => {
                     const responseObj = JSON.parse(response)
+                    const city = responseObj.name,
+                        country = responseObj.sys.country
 
                     dispatch({
                         type: "CHECK_CITY_SUCCESS",
                         payload: {
-                            city: responseObj.name,
-                            country: responseObj.sys.country
+                            city,
+                            country
                         }
                     })
                 },
                 error => {
                     dispatch({
                         type: "CHECK_CITY_ERROR",
-                        payload: `Простите, \nгород "${city}" \nи страна "${country}"\nне найдены`
+                        payload: {
+                            city,
+                            country
+                        }
                     })
                 }
             );
@@ -138,14 +113,10 @@ export function selectCity(city, country) {
 
                     dispatch({
                         type: "GET_WEATHER_SUCCESS",
-                        payload: responseObj
+                        payload: {...responseObj, selected: {city, country}}
                     })
                 },
-                error => {
-                    dispatch({
-                        type: "GET_WEATHER_ERROR"
-                    })
-                }
+                error => console.log(`Rejected: ${error}`)
             );
     }
 }

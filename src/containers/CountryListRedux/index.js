@@ -6,10 +6,15 @@ import * as actions from '../../actions/index'
 
 class CountryListRedux extends Component {
     render() {
-        const { addedList } = this.props
-        const { deleteCity, selectCity } = this.props.actions
+        const { addedList, selectedItem } = this.props
+        const { deleteCity, selectCity, showCurrentWeather } = this.props.actions
         return (
-            <CountryList countryList={addedList} deleteCity={deleteCity} selectCity={selectCity}/>
+            <CountryList
+                countryList={addedList}
+                deleteCity={deleteCity}
+                selectCity={selectCity}
+                selected={selectedItem}
+                showCurrentWeather={showCurrentWeather}/>
         )
     }
 }
@@ -22,7 +27,8 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
     return {
-        addedList: state.addedList.list
+        addedList: state.addedList.list,
+        selectedItem: state.addedList.selectedItem
     }
 }
 

@@ -6,10 +6,17 @@ import * as actions from '../../actions/index'
 
 class CurrentButtonRedux extends Component {
     render() {
-        const { showCurrentWeather } = this.props.actions
+        const { getWeather } = this.props.actions
+        const { coords } = this.props.position
         return (
-            <CurrentButton onClickHandler={showCurrentWeather}/>
+            <CurrentButton onClickHandler={getWeather.bind(null, {coords})}/>
         )
+    }
+}
+
+function mapStateToProps(state) {
+    return {
+        position: state.position
     }
 }
 
@@ -19,4 +26,4 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-export default connect(null, mapDispatchToProps)(CurrentButtonRedux)
+export default connect(mapStateToProps, mapDispatchToProps)(CurrentButtonRedux)

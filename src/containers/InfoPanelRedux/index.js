@@ -4,15 +4,16 @@ import { connect } from 'react-redux'
 
 class InfoPanelRedux extends Component {
     render() {
+        const { selectedItem } = this.props
         return (
-            <InfoPanel {...this.props}/>
+            <InfoPanel selectedItem={selectedItem}/>
         )
     }
 }
 
 function mapStateToProps(state) {
     return {
-        weather: state.weather
+        selectedItem: state.weather.selectedItem
     }
 }
 

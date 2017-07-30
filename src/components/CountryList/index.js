@@ -2,43 +2,43 @@ import React, {Component} from 'react'
 import {Row, Col} from 'react-bootstrap'
 import Dimensions from 'react-dimensions'
 import CountryItem from '../CountryItem'
+import Loader from '../Loader'
+
 import './style.css'
 
 class CountryList extends Component {
     render() {
         const {
             countryList = [],
+            selectedItem,
+            fetching,
             deleteCity,
-            selectCity,
-            showCurrentWeather,
-            selected
+            selectCity
         } = this.props
 
-        // if (countryList.length === 0)
-        //     showCurrentWeather()
-
         return (
-            <Row>
-                <Col md={4}>
-                    <ul className="country-list">
-                        {countryList.map(
-                            (country, index) => {
-                                const isSelected = (selected && country.country === selected.country && country.city === selected.city)
-                                return <CountryItem
-                                    selected={isSelected}
-                                    selectCity={selectCity}
-                                    deleteCity={deleteCity}
-                                    key={Math.random()}
-                                    label={country}
-                                    index={index}/>
+            (fetching) ?
+                <Loader/>
+                :
+                <Row>
+                    <Col md={12}>
+                        <ul className="country-list">
+                            {countryList.map(
+                                (item, index) => {
+                                    const selected = (selectedItem && item.name === selectedItem.name && item.sys.country === selectedItem.sys.country)
+                                    return <CountryItem
+                                        selected={selected}
+                                        selectCity={selectCity}
+                                        deleteCity={deleteCity}
+                                        key={Math.random()}
+                                        weather={item}
+                                        index={index}/>
 
-                            }
-                        )}
-                    </ul>
-                </Col>
-
-            </Row>
-
+                                }
+                            )}
+                        </ul>
+                    </Col>
+                </Row>
         )
     }
 }

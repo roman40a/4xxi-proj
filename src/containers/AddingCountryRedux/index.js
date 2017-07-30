@@ -6,19 +6,19 @@ import * as actions from '../../actions/index'
 
 class AddingCountryRedux extends Component {
     render() {
-        const { addCity } = this.props.actions
-        const { fullList } = this.props
+        const { getWeather } = this.props.actions
+        const { list } = this.props
         return (
             <AddingCountry
-                countryList={fullList}
-                addCity={addCity}/>
+                getWeather={getWeather}
+                list={list}/>
         )
     }
 }
 
 function mapStateToProps(state) {
     return {
-        fullList: state.fullList
+        list: state.weather.list
     }
 }
 

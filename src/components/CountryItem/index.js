@@ -1,18 +1,17 @@
 import React, {Component} from 'react'
-import './style.css'
 
 export default class CountryItem extends Component {
     render() {
-        const {label, selectCity, deleteCity, showCurrentWeather, isSelected} = this.props
-        const {city, country} = label
+        const {weather, selectCity, deleteCity, selected} = this.props
+        const city = weather.name, country = weather.sys.country
         return (
-            <li className={`country-item ${isSelected?'selected':'    '}`}>
-                <div className="country-item__info" onClick={selectCity.bind(null, city, country)}>
+            <li className={`country-item ${selected?'selected':''}`}>
+                <div className="country-item__info" onClick={selectCity.bind(null, weather)}>
                     <div className="country-item__label">{city}</div>
                     <div className="country-item__label">{country}</div>
                 </div>
 
-                <div className="country-item__delete" onClick={deleteCity.bind(null, city, country)}>Удалить</div>
+                <div className="country-item__delete" onClick={deleteCity.bind(null, weather)}>Удалить</div>
             </li>
         )
     }

@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import addedList from './addedList'
+import position from './position'
 import weather from './weather'
 
 export default combineReducers({
-    addedList,
+    position,
     weather
 })

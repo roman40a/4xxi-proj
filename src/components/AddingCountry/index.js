@@ -16,16 +16,23 @@ export default class AddingCountry extends Component {
 
     render() {
         const {
-            addCity
+            getWeather,
+            list
         } = this.props
 
         const {city, country} = this.state
         return (
             <Row>
-                <Col md={3}>
-                    <FormControl onChange={this.onChange.bind(this, "city")} type="text" placeholder="city" />
-                    <FormControl onChange={this.onChange.bind(this, "country")} type="text" placeholder="country" />
-                    <Button onClick={() => addCity(city,country)}>Добавить в список</Button>
+                <Col md={12}>
+                    <FormControl
+                        onChange={this.onChange.bind(this, "city")}
+                        type="text" placeholder="city" />
+                    <FormControl
+                        onChange={this.onChange.bind(this, "country")}
+                        type="text" placeholder="country" />
+                    <Button
+                        style={{width: '100%', marginTop: '7px'}}
+                        onClick={() => getWeather( { place: {city,country} }, list )}>Добавить в список</Button>
                 </Col>
             </Row>
         )

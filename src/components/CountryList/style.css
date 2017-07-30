@@ -1,7 +1,7 @@
 .country-list {
   padding: 0;
 }
-.country-list .country-item {
+.country-item {
   list-style-type: none;
   border-style: solid;
   border-color: black;
@@ -9,8 +9,13 @@
   margin: 15px;
 }
 
-.country-list .country-item .selected {
-  border-width: 5px;
+.selected {
+  background-color: #1d9ce5;
+}
+
+.selected:hover {
+  background-color: #2d6987 !important;
+  color: white;
 }
 
 .country-item:hover {
@@ -36,4 +41,7 @@
 }
 .country-item__delete {
   width: 20%;
+}
+.country-item__delete:hover {
+  color: white;
 }

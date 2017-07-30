@@ -6,10 +6,17 @@ import * as actions from '../actions/index'
 
 class AppRedux extends Component {
     render() {
-        const { showCurrentWeather } = this.props.actions
+        const { getCoords } = this.props.actions
+        const { position } = this.props
         return (
-            <App onLoadHandler={showCurrentWeather}/>
+            <App getCoords={getCoords} position={position}/>
         )
+    }
+}
+
+function mapStateToProps(state) {
+    return {
+        position: state.position
     }
 }
 
@@ -19,4 +26,4 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-export default connect(null, mapDispatchToProps)(AppRedux)
+export default connect(mapStateToProps, mapDispatchToProps)(AppRedux)
